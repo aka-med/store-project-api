@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: store-project
+  datasource:
+    url: jdbc:mysql://localhost:${DB_PORT:3306}/${DB_NAME:store}?createDatabaseIfNotExist=true
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:12345}
+  jpa:
+    show-sql: true
