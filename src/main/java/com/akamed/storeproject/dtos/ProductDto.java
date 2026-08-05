@@ -1,12 +1,11 @@
 package com.akamed.storeproject.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+
+import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Getter
-@AllArgsConstructor
+@Data
 public class ProductDto {
     private Long id;
     private String name;
