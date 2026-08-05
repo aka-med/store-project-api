@@ -28,7 +28,7 @@ public class Profile {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
-    @Column(name = "loyality_points")
+    @Column(name = "loyalty_points")
     private int loyaltyPoints;
 
 //    @OneToOne

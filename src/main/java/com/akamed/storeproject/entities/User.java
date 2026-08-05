@@ -13,6 +13,7 @@ import java.util.Set;
 @Builder
 @Setter
 @Getter
+@ToString(exclude = {"addresses", "wishList"})
 @Entity
 @Table(name = "users")
 public class User  {
@@ -54,14 +55,14 @@ public class User  {
     )
     private Set<Product> wishList = new HashSet<>();
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private Profile profile; // comment it for the lazy loading, as the user is not the owner of the relationship
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    private Profile profile; // comment it for the lazy loading, as the user is not the owner of the relationship
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "name = " + name + ", " +
-                "email = " + email + ")";
-    }
+//    @Override
+//    public String toString() {
+//        return getClass().getSimpleName() + "(" +
+//                "id = " + id + ", " +
+//                "name = " + name + ", " +
+//                "email = " + email + ")";
+//    }
 }
