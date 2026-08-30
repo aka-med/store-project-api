@@ -3,8 +3,7 @@ package com.akamed.storeproject.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
@@ -12,6 +11,9 @@ import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
 @Setter
 @Entity
@@ -39,8 +41,25 @@ public class Order {
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
     private Set<OrderItem> items = new LinkedHashSet<>();
 
+    public static Order fromCart(Cart cart, User costumer) {
+        var order = new Order();
+        order.setTotalPrice(cart.getTotalPrice());
+        order.setStatus(OrderStatus.PENDING);
+        order.setCostumer(costumer);
+
+        cart.getItems().forEach(item -> {
+            var orderItem = new OrderItem();
+            orderItem.setOrder(order);
+            orderItem.setProduct((item.getProduct()));
+            orderItem.setQuantity(item.getQuantity());
+            orderItem.setTotalPrice(item.getTotalPrice());
+            orderItem.setUnitPrice(item.getProduct().getPrice());
+            order.items.add(orderItem);
+        });
+        return order;
+    }
 
 }

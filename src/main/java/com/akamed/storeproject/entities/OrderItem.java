@@ -36,6 +36,4 @@ public class OrderItem {
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
-
-
 }
