@@ -26,7 +26,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "costumer_id")
-    private User costumer;
+    private User customer;
 
 
     @Column(name = "status")
@@ -44,11 +44,11 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
     private Set<OrderItem> items = new LinkedHashSet<>();
 
-    public static Order fromCart(Cart cart, User costumer) {
+    public static Order fromCart(Cart cart, User customer) {
         var order = new Order();
         order.setTotalPrice(cart.getTotalPrice());
         order.setStatus(OrderStatus.PENDING);
-        order.setCostumer(costumer);
+        order.setCustomer(customer);
 
         cart.getItems().forEach(item -> {
             var orderItem = new OrderItem();
@@ -60,6 +60,10 @@ public class Order {
             order.items.add(orderItem);
         });
         return order;
+    }
+
+    public boolean isPlacedBy(User customer) {
+        return this.customer.equals(customer);
     }
 
 }
