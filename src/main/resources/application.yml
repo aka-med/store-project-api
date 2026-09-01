@@ -12,5 +12,20 @@ spring:
     accessTokenExpiration: 7200
     refreshTokenExpiration: 604800
 
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: /dev
+      prefix: stdout
+      suffix: ""
+      rotate: false
+      buffered: false
+      pattern: "%r %s %D ms"
+
 stripe:
   secretKey: ${STRIPE_SECRET_KEY}
+  webhookSecretKey: ${STRIPE_WEBHOOK_SECRET_KEY}
+
+websiteUrl: http://localhost:4242
