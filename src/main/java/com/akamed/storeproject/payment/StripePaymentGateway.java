@@ -2,8 +2,8 @@ package com.akamed.storeproject.payment;
 
 import com.akamed.storeproject.orders.Order;
 import com.akamed.storeproject.orders.OrderItem;
-import com.akamed.storeproject.orders.PaymentStatus;
 import com.akamed.storeproject.orders.OrderRepository;
+import com.akamed.storeproject.orders.PaymentStatus;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Event;
