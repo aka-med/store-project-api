@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.akamed</groupId>
     <artifactId>store-project</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>data-project</name>
-    <description>data-project</description>
+    <version>1.0.0</version>
+    <name>store-project</name>
+    <description>store-project</description>
     <url/>
     <licenses>
         <license/>
@@ -134,6 +134,24 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.7.0.Beta2</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
