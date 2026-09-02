@@ -1,31 +1,13 @@
 spring:
   application:
     name: store-project
-  datasource:
-    url: jdbc:mysql://localhost:${DB_PORT:3306}/${DB_NAME:store}?createDatabaseIfNotExist=true
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:12345}
-  jpa:
-    show-sql: true
   jwt:
     secret: ${JWT_SECRET}
     accessTokenExpiration: 900
     refreshTokenExpiration: 604800
-
-
-server:
-  tomcat:
-    accesslog:
-      enabled: true
-      directory: /dev
-      prefix: stdout
-      suffix: ""
-      rotate: false
-      buffered: false
-      pattern: "%r %s %D ms"
+  profiles:
+    active: dev
 
 stripe:
   secretKey: ${STRIPE_SECRET_KEY}
   webhookSecretKey: ${STRIPE_WEBHOOK_SECRET_KEY}
-
-websiteUrl: http://localhost:4242
